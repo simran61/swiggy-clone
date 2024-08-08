@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.location {
+  padding-left: 5px;
+  margin-left: 5px;
+  color: #686b78;
+}
+
+._2MSid {
+  fill: #fff;
+  stroke-width: 3px;
+  stroke: #686b78;
+}
+
+.cart {
+  position: relative;
+}
+
+._3yZyp > svg {
+  position: absolute;
+  top: 3px;
+}
+
+.filter-btns > button {
+  border: 1px solid rgba(2, 6, 12, 0.15);
+  box-shadow: rgba(2, 6, 12, 0.04) 0px 2px 12px;
+}
+
+._2vS77 {
+  position: relative;
+  left: 6px;
+  font-size: 14px;
+  color: #686b78;
+  font-weight: 600;
+}
+
+.slick-prev {
+  left: 92%;
+  top: -20%;
+}
+
+.slick-next {
+  right: 2%;
+  top: -20%;
+}
+
+.res-img-overlay {
+  height: 60%;
+  width: 100%;
+  opacity: 70%;
+  background-image: linear-gradient(rgba(255, 255, 255, 0), black, black);
+  position: absolute;
+  bottom: 0;
+  border-radius: 0 0 12px 12px;
+}
+
+.res-img {
+  filter: drop-shadow(rgba(0, 0, 0, 0.1) 0px 2px 8px);
+}
+
+.res-name {
+  overflow: hidden;
+  display: -webkit-box;
+  overflow-wrap: break-word;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.light-card-info {
+  font-size: 16px;
+  line-height: 19px;
+  letter-spacing: -0.3px;
+  color: rgba(2, 6, 12, 0.6);
+  overflow: hidden;
+  width: 98%;
+  display: -webkit-box;
+  overflow-wrap: break-word;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
