@@ -4,7 +4,6 @@ import { CDN_URL } from "../utils/constants";
 
 const RestaurantCard = (props) => {
   const { resData } = props;
-
   // const { loggedInUser } = useContext(UserContext);
 
   const {
@@ -19,7 +18,7 @@ const RestaurantCard = (props) => {
   } = resData;
 
   return (
-    <div className="res-card m-2 mb-5 w-[245px]" data-testid="resCard">
+    <div className="res-card my-2 mb-5 w-full" data-testid="resCard">
       <div className="relative">
         <img
           className="res-img rounded-xl h-[170px] object-cover w-full"

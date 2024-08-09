@@ -4,6 +4,9 @@ export const CAROUSEL_DISHES =
 export const CDN_URL =
   "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/";
 
+export const TOP_PICKS =
+  "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_292,h_300/";
+
 export const LOGO_URL = "https://cdn.worldvectorlogo.com/logos/swiggy-1.svg";
 
 export const MENU_API =

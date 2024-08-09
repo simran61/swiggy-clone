@@ -2,7 +2,7 @@ import { CDN_URL } from "../utils/constants";
 import { addItem } from "../utils/cartSlice.js";
 import { useDispatch } from "react-redux";
 
-const ItemList = ({ items, dummy }) => {
+const ItemList = ({ items }) => {
   const dispatch = useDispatch();
 
   const handleAddItem = (item) => {

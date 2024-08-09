@@ -52,17 +52,17 @@ const Body = () => {
 
   var settings = {
     dots: false,
-    infinite: true,
+    infinite: false,
     speed: 500,
-    slidesToShow: 7,
+    slidesToShow: 6.8,
     slidesToScroll: 3,
   };
 
   var settings1 = {
     dots: true,
-    infinite: true,
+    infinite: false,
     speed: 500,
-    slidesToShow: 4,
+    slidesToShow: 3.7,
     slidesToScroll: 3,
   };
 
@@ -99,10 +99,14 @@ const Body = () => {
       {/* top restaurants carousel */}
       <div>
         <h1 className="font-bold text-xl">{topRestaurants?.header?.title}</h1>
-        <div className="mx-10  my-14">
+        <div className="mx-10 my-14">
           <Slider {...settings1}>
             {topRes.map((res) => (
-              <RestaurantCard resData={res?.info} />
+              <Link key={res.info.id} to={"/restaurants/" + res.info.id}>
+                <div className="w-[273px]">
+                  <RestaurantCard resData={res?.info} />
+                </div>
+              </Link>
             ))}
           </Slider>
         </div>
@@ -213,18 +217,20 @@ const Body = () => {
           </button>
         </div>
 
-        <div className="flex flex-wrap justify-between mx-4">
+        <div className="flex flex-wrap justify-between">
           {filteredRestaurant.map((restaurant) => (
-            <Link
-              key={restaurant.info.id}
-              to={"/restaurants/" + restaurant.info.id}
-            >
-              {restaurant.info.isNewlyOnboarded ? (
-                <RestaurantCardPromoted resData={restaurant?.info} />
-              ) : (
-                <RestaurantCard resData={restaurant?.info} />
-              )}
-            </Link>
+            <div className="w-[254px]">
+              <Link
+                key={restaurant.info.id}
+                to={"/restaurants/" + restaurant.info.id}
+              >
+                {restaurant.info.isNewlyOnboarded ? (
+                  <RestaurantCardPromoted resData={restaurant?.info} />
+                ) : (
+                  <RestaurantCard resData={restaurant?.info} />
+                )}
+              </Link>
+            </div>
           ))}
         </div>
       </div>
