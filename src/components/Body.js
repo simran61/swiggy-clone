@@ -176,7 +176,15 @@ const Body = () => {
             />
           </button>
 
-          <button className="rounded-full py-2 px-3 mr-3 text-sm text-[rgba(2,6,12,0.75)] font-semibold">
+          <button
+            className="rounded-full py-2 px-3 mr-3 text-sm text-[rgba(2,6,12,0.75)] font-semibold"
+            onClick={() => {
+              const filteredList = listOfRestaurants.filter(
+                (res) => res.info.sla.deliveryTime < 30
+              );
+              setFilteredRestaurant(filteredList);
+            }}
+          >
             Fast Delivery
           </button>
 
@@ -196,11 +204,27 @@ const Body = () => {
             Rating 4.0+
           </button>
 
-          <button className="rounded-full py-2 px-3 mr-3 text-sm text-[rgba(2,6,12,0.75)] font-semibold">
+          <button
+            className="rounded-full py-2 px-3 mr-3 text-sm text-[rgba(2,6,12,0.75)] font-semibold"
+            onClick={() => {
+              const filteredList = listOfRestaurants.filter(
+                (res) => res.info.veg == true
+              );
+              setFilteredRestaurant(filteredList);
+            }}
+          >
             Pure Veg
           </button>
 
-          <button className="rounded-full py-2 px-3 mr-3 text-sm text-[rgba(2,6,12,0.75)] font-semibold">
+          <button
+            className="rounded-full py-2 px-3 mr-3 text-sm text-[rgba(2,6,12,0.75)] font-semibold"
+            onClick={() => {
+              const filteredList = listOfRestaurants.filter((res) =>
+                res.info.aggregatedDiscountInfoV3 == undefined ? null : res
+              );
+              setFilteredRestaurant(filteredList);
+            }}
+          >
             Offers
           </button>
 
@@ -233,6 +257,15 @@ const Body = () => {
             }}
           >
             Less than Rs 300
+          </button>
+
+          <button
+            className="rounded-full py-2 px-3 mr-3 text-sm text-[#ff5200] font-semibold"
+            onClick={() => {
+              setFilteredRestaurant(listOfRestaurants);
+            }}
+          >
+            Clear Filters
           </button>
         </div>
 
