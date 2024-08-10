@@ -28,9 +28,8 @@ const RestaurantCard = (props) => {
         <div className="res-img-overlay"></div>
         {aggregatedDiscountInfoV3 && (
           <h1 className="absolute bottom-2 left-3 text-xl font-black text-white">
-            {aggregatedDiscountInfoV3?.header +
-              " " +
-              aggregatedDiscountInfoV3?.subHeader}
+            <span>{aggregatedDiscountInfoV3?.header} </span>
+            <span>{aggregatedDiscountInfoV3?.subHeader}</span>
           </h1>
         )}
       </div>
