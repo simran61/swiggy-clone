@@ -26,11 +26,13 @@ const RestaurantCard = (props) => {
           alt="res-logo"
         />
         <div className="res-img-overlay"></div>
-        <h1 className="absolute bottom-2 left-3 text-xl font-black text-white">
-          {aggregatedDiscountInfoV3?.header +
-            " " +
-            aggregatedDiscountInfoV3?.subHeader}
-        </h1>
+        {aggregatedDiscountInfoV3 && (
+          <h1 className="absolute bottom-2 left-3 text-xl font-black text-white">
+            {aggregatedDiscountInfoV3?.header +
+              " " +
+              aggregatedDiscountInfoV3?.subHeader}
+          </h1>
+        )}
       </div>
       <h3 className="res-name font-bold pt-2 text-lg">{name}</h3>
       <div className="flex">
