@@ -80,3 +80,47 @@
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
 }
+
+.res-info-box-bg {
+  background: linear-gradient(
+    rgb(255, 255, 255) -6.71%,
+    rgb(235, 235, 242) 56.19%,
+    rgb(223, 223, 231) 106.56%
+  );
+  padding: 0px 16px 16px;
+  border-bottom-left-radius: 36px;
+  border-bottom-right-radius: 36px;
+}
+
+.res-info-box {
+  border-radius: 20px;
+  border: 1px solid rgba(2, 6, 12, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.04) 0px 8px 16px 0px;
+}
+
+.jICcAR {
+  display: flex;
+  flex-direction: column;
+  -webkit-box-align: center;
+  align-items: center;
+}
+
+.cAzFIF {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgb(196, 196, 196);
+}
+
+.gzkjpM {
+  width: 1px;
+  height: 23px;
+  background: rgb(196, 196, 196);
+}
+
+.cAzFIF {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgb(196, 196, 196);
+}
