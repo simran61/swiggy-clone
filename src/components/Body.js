@@ -204,7 +204,17 @@ const Body = () => {
             Offers
           </button>
 
-          <button className="rounded-full py-2 px-3 mr-3 text-sm text-[rgba(2,6,12,0.75)] font-semibold">
+          <button
+            className="rounded-full py-2 px-3 mr-3 text-sm text-[rgba(2,6,12,0.75)] font-semibold"
+            onClick={() => {
+              const filteredList = listOfRestaurants.filter((res) => {
+                const costParts = res.info.costForTwo.split(" ");
+                const costNumber = parseInt(costParts[0].replace("₹", ""), 10);
+                return costNumber >= 300 && costNumber <= 600 ? res : null;
+              });
+              setFilteredRestaurant(filteredList);
+            }}
+          >
             Rs 300-Rs 600
           </button>
 
