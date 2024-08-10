@@ -124,3 +124,12 @@
   border-radius: 50%;
   background: rgb(196, 196, 196);
 }
+
+hr {
+  margin: 1rem 0;
+}
+
+.sub-item-info:last-child,
+.item-info:last-child {
+  border-bottom: none;
+}

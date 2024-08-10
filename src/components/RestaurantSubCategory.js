@@ -9,8 +9,11 @@ const RestaurantSubCategory = ({ nestedItem, showItems, setShowIndex }) => {
   console.log(nestedItem);
 
   return (
-    <div className="mx-4 cursor-pointer" onClick={handleClick}>
-      <div className="flex justify-between items-center py-3">
+    <div
+      className="sub-item-info mx-4 cursor-pointer  border-b-2"
+      onClick={handleClick}
+    >
+      <div className="flex justify-between items-center my-4">
         <span className="font-bold text-base">
           {nestedItem?.title} ({nestedItem?.itemCards?.length})
         </span>
@@ -21,7 +24,6 @@ const RestaurantSubCategory = ({ nestedItem, showItems, setShowIndex }) => {
         />
       </div>
       {showItems && <ItemList items={nestedItem.itemCards} />}
-      <hr />
     </div>
   );
 };

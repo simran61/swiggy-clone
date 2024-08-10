@@ -4,7 +4,10 @@ import useRestaurantMenu from "../utils/useRestaurantMenu";
 import RestaurantCategory from "./RestaurantCategory";
 import { useState } from "react";
 import HalfOfferCard from "./HalfOfferCard";
-
+import menuLeft from "../assets/menu-left.png";
+import menuRight from "../assets/menu-right.png";
+import vegIcon from "../assets/veg.png";
+import nonVeg from "../assets/nonVeg.png";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -69,7 +72,7 @@ const RestaurantMenu = () => {
     dots: false,
     infinite: false,
     speed: 500,
-    slidesToShow: 2.4,
+    slidesToShow: 2.5,
     slidesToScroll: 1,
   };
 
@@ -170,24 +173,18 @@ const RestaurantMenu = () => {
         </div>
       )}
 
-      <div className="my-8">
-        <div className="flex items-center justify-center">
-          <img
-            className="h-5 opacity-50"
-            src="https://cdn-icons-png.flaticon.com/512/271/271220.png"
-            alt=""
-          />
-          <h1 className="mx-2">MENU</h1>
-          <img
-            className="h-5 opacity-50"
-            src="https://cdn-icons-png.flaticon.com/128/32/32213.png"
-            alt=""
-          />
+      <div>
+        <div className="flex items-center justify-center mb-6">
+          <img className="h-3" src={menuLeft} alt="" />
+          <h1 className="text-[13px] mx-2 text-[#02060c99] font-medium tracking-widest">
+            MENU
+          </h1>
+          <img className="h-3" src={menuRight} alt="" />
         </div>
 
         <div className="flex justify-between bg-gray-100 px-4 py-2.5 rounded-lg">
           <input
-            className="bg-gray-100 w-3/4"
+            className="bg-gray-100 w-[100%] text-center"
             type="text"
             placeholder="Search for dishes"
           />
@@ -200,22 +197,14 @@ const RestaurantMenu = () => {
           </button>
         </div>
 
-        <div className="filter-btns flex my-4">
-          <button className="text-green-600 flex items-center rounded-full py-2 px-3 mr-3 text-sm text-[rgba(2,6,12,0.75)] font-semibold">
-            <img
-              className="h-3 mr-2"
-              src="https://static-00.iconduck.com/assets.00/filter-icon-2048x1617-97le7v6v.png"
-              alt=""
-            />
+        <div className="filter-btns flex my-6">
+          <button className="text-green-700 flex items-center rounded-full py-2 px-3 mr-3 text-sm text-[rgba(2,6,12,0.75)] font-semibold">
+            <img className="h-4 mr-2" src={vegIcon} alt="" />
             Pure Veg
           </button>
 
-          <button className="text-red-600 flex items-center rounded-full py-2 px-3 mr-3 text-sm text-[rgba(2,6,12,0.75)] font-semibold">
-            <img
-              className="h-4 mr-2"
-              src="https://static.thenounproject.com/png/1123247-200.png"
-              alt=""
-            />
+          <button className="text-red-700 flex items-center rounded-full py-2 px-3 mr-3 text-sm text-[rgba(2,6,12,0.75)] font-semibold">
+            <img className="h-4 mr-2" src={nonVeg} alt="" />
             Non Veg
           </button>
 
@@ -224,15 +213,17 @@ const RestaurantMenu = () => {
           </button>
         </div>
 
-        <hr className="my-3" />
-
-        <div>
-          <h1 className="font-bold text-xl">Top Picks</h1>
-          <Slider {...settings1}>
-            {topBanners &&
-              topBanners.map((banner) => <TopPicks topCard={banner} />)}
-          </Slider>
-        </div>
+        {topBanners && (
+          <div>
+            <hr />
+            <h1 className="font-bold text-xl">Top Picks</h1>
+            <Slider {...settings1}>
+              {topBanners.map((banner) => (
+                <TopPicks topCard={banner} />
+              ))}
+            </Slider>
+          </div>
+        )}
 
         {nestedCategories.map((nestedCategory, index) => (
           <RestaurantNestedCategory
