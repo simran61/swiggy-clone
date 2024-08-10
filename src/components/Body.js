@@ -138,19 +138,7 @@ const Body = () => {
             Search
           </button>
         </div>
-        <div className="search m-4 p-4">
-          <button
-            className="px-4 py-2 bg-gray-100 rounded-lg m-4"
-            onClick={() => {
-              const filteredList = listOfRestaurants.filter(
-                (res) => res.info.avgRating > 4.2
-              );
-              setFilteredRestaurant(filteredList);
-            }}
-          >
-            Top Rated Restaurants
-          </button>
-        </div>
+        
         <div className="search m-4 p-4">
           <label>UserName: </label>
           <input
@@ -196,7 +184,15 @@ const Body = () => {
             New on Swiggy
           </button>
 
-          <button className="rounded-full py-2 px-3 mr-3 text-sm text-[rgba(2,6,12,0.75)] font-semibold">
+          <button
+            className="rounded-full py-2 px-3 mr-3 text-sm text-[rgba(2,6,12,0.75)] font-semibold"
+            onClick={() => {
+              const filteredList = listOfRestaurants.filter(
+                (res) => res.info.avgRating > 4
+              );
+              setFilteredRestaurant(filteredList);
+            }}
+          >
             Rating 4.0+
           </button>
 
