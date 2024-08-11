@@ -17,7 +17,7 @@ const BestCuisines = ({ cuisines }) => {
       <div className="grid grid-cols-4">
         {brands.slice(0, visible).map((city) => (
           <Link to={city.link}>
-            <button className="border rounded-lg py-3 my-2 w-[270px] font-semibold">
+            <button className="btn-tab border rounded-lg py-3  px-4  my-2 w-[270px] font-semibold">
               {city.text}
             </button>
           </Link>

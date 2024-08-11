@@ -22,9 +22,9 @@ const Footer = () => {
           />
         </div>
       </div>
-      <div className="px-64 py-10 bg-black flex text-white mx-auto justify-between">
+      <div className="px-64 pt-10 pb-20 bg-black flex text-white mx-auto justify-between">
         <div>
-          <div>
+          <div className="flex mb-4 ">
             <svg
               width="21"
               height="32"
@@ -72,103 +72,96 @@ const Footer = () => {
                 </filter>
               </defs>
             </svg>
-            <h3 className="font-black">Swiggy</h3>
+            <h3 className="font-black text-2xl ml-3">Swiggy</h3>
           </div>
-          <span>© 2024 Bundl Technologies Pvt. Ltd</span>
+          <span className="opacity-60">© 2024 Bundl Technologies Pvt. Ltd</span>
         </div>
         <div>
-          <h4>Company</h4>
+          <h4 className="text-[18px] font-bold">Company</h4>
           <ul>
-            <li>
+            <li className="my-4 opacity-60">
               <Link to="/">About</Link>
             </li>
-            <li>
+            <li className="my-4 opacity-60">
               <Link to="/">Careers</Link>
             </li>
-            <li>
+            <li className="my-4 opacity-60">
               <Link to="/">Team</Link>
             </li>
-            <li>
+            <li className="my-4 opacity-60">
               <Link to="/">Swiggy One</Link>
             </li>
-            <li>
+            <li className="my-4 opacity-60">
               <Link to="/">Swiggy Instamart</Link>
             </li>
-            <li>
+            <li className="my-4 opacity-60">
               <Link to="/">Swiggy Genie</Link>
             </li>
           </ul>
         </div>
         <div>
-          <div>
-            <h4>Company</h4>
+          <div className="mb-16">
+            <h4 className="text-[18px] font-bold">Contact us</h4>
             <ul>
-              <li>
-                <Link to="/">About</Link>
+              <li className="my-4 opacity-60">
+                <Link to="/">Help & Support</Link>
               </li>
-              <li>
-                <Link to="/">Careers</Link>
+              <li className="my-4 opacity-60">
+                <Link to="/">partner with us</Link>
               </li>
-              <li>
-                <Link to="/">Team</Link>
-              </li>
-              <li>
-                <Link to="/">Swiggy One</Link>
-              </li>
-              <li>
-                <Link to="/">Swiggy Instamart</Link>
-              </li>
-              <li>
-                <Link to="/">Swiggy Genie</Link>
+              <li className="my-4 opacity-60">
+                <Link to="/">Ride with us</Link>
               </li>
             </ul>
           </div>
           <div>
-            <h4>Company</h4>
+            <h4 className="text-[18px] font-bold">Legal</h4>
             <ul>
-              <li>
-                <Link to="/">About</Link>
+              <li className="my-4 opacity-60">
+                <Link to="/">Terms & Conditions</Link>
               </li>
-              <li>
-                <Link to="/">Careers</Link>
+              <li className="my-4 opacity-60">
+                <Link to="/">Cookie Policy</Link>
               </li>
-              <li>
-                <Link to="/">Team</Link>
+              <li className="my-4 opacity-60">
+                <Link to="/">Privacy Policy</Link>
               </li>
-              <li>
-                <Link to="/">Swiggy One</Link>
-              </li>
-              <li>
-                <Link to="/">Swiggy Instamart</Link>
-              </li>
-              <li>
-                <Link to="/">Swiggy Genie</Link>
+              <li className="my-4 opacity-60">
+                <Link to="/">Investor Relations</Link>
               </li>
             </ul>
           </div>
         </div>
         <div>
-          <h4>Company</h4>
-          <ul className="opacity-60">
-            <li>
-              <Link to="/">About</Link>
+          <h4 className="text-[18px] font-bold">We deliver to:</h4>
+          <ul>
+            <li className="my-4 opacity-60">
+              <Link to="/">Bangalore</Link>
             </li>
-            <li>
-              <Link to="/">Careers</Link>
+            <li className="my-4 opacity-60">
+              <Link to="/">Gurgoan</Link>
             </li>
-            <li>
-              <Link to="/">Team</Link>
+            <li className="my-4 opacity-60">
+              <Link to="/">Hyderabad</Link>
             </li>
-            <li>
-              <Link to="/">Swiggy One</Link>
+            <li className="my-4 opacity-60">
+              <Link to="/">Delhi</Link>
             </li>
-            <li>
-              <Link to="/">Swiggy Instamart</Link>
+            <li className="my-4 opacity-60">
+              <Link to="/">Mumbai</Link>
             </li>
-            <li>
-              <Link to="/">Swiggy Genie</Link>
+            <li className="my-4 opacity-60">
+              <Link to="/">Pune</Link>
             </li>
           </ul>
+          <button className="flex items-center justify-between w-[120px] border border-gray-800 p-1 px-2 rounded-md">
+            <span className="text-sm opacity-60">589 cities</span>
+            <img
+              className="h-2"
+              src="https://clipground.com/images/dropdown-icon-png-3.png"
+              alt=""
+            />
+          </button>
         </div>
       </div>
     </div>

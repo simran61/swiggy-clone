@@ -162,7 +162,7 @@ const RestaurantMenu = () => {
       </div>
 
       {offers && (
-        <div className="my-8">
+        <div className="offer-container my-8">
           <h1 className="text-xl font-extrabold">Deals for you</h1>
 
           <Slider {...settings}>
@@ -214,9 +214,9 @@ const RestaurantMenu = () => {
         </div>
 
         {topBanners && (
-          <div>
+          <div className="banners-container">
             <hr />
-            <h1 className="font-bold text-xl">Top Picks</h1>
+            <h1 className="text-xl font-extrabold">Top Picks</h1>
             <Slider {...settings1}>
               {topBanners.map((banner) => (
                 <TopPicks topCard={banner} />

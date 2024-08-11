@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.header {
+  box-shadow: 0 15px 40px -20px rgba(40, 44, 63, 0.15);
+}
+
 .location {
   padding-left: 5px;
   margin-left: 5px;
@@ -37,13 +41,23 @@
 }
 
 .slick-prev {
-  left: 92%;
-  top: -20%;
+  left: 93%;
+  top: -10%;
 }
 
 .slick-next {
   right: 2%;
-  top: -20%;
+  top: -10%;
+}
+
+.banners-container > div > .slick-prev,
+.offer-container > div > .slick-prev {
+  left: 90.5%;
+}
+
+.banners-container > div > .slick-prev,
+.banners-container > div > .slick-next {
+  top: -5%;
 }
 
 .res-img-overlay {
@@ -79,6 +93,12 @@
   overflow-wrap: break-word;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+}
+
+.btn-tab {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .res-info-box-bg {
@@ -132,4 +152,11 @@ hr {
 .sub-item-info:last-child,
 .item-info:last-child {
   border-bottom: none;
+}
+
+.res-card {
+  transition: all 0.2s ease-in-out;
+}
+.res-card:hover {
+  transform: scale(0.95);
 }

@@ -81,11 +81,12 @@ const Body = () => {
   return listOfRestaurants.length === 0 ? (
     <Shimmer />
   ) : (
-    <div className="mx-40">
-      {/* carousel dishes */}
-      <div>
-        <h1 className="font-bold text-xl">{carouselDishes.header.title}</h1>
-        <div className="mx-10  my-14">
+    <div className="mx-10  mx-40">
+      <div className="mt-4 mb-14 mx-10">
+        <h1 className="font-extrabold text-2xl">
+          {carouselDishes.header.title}
+        </h1>
+        <div className="mr-4">
           <Slider {...settings}>
             {dish.map((d) => (
               <CarouselDish dishData={d} />
@@ -97,9 +98,11 @@ const Body = () => {
       <hr />
 
       {/* top restaurants carousel */}
-      <div>
-        <h1 className="font-bold text-xl">{topRestaurants?.header?.title}</h1>
-        <div className="mx-10 my-14">
+      <div className="my-9 mx-10">
+        <h1 className="font-extrabold text-2xl py-3">
+          {topRestaurants?.header?.title}
+        </h1>
+        <div className="">
           <Slider {...settings1}>
             {topRes.map((res) => (
               <Link key={res.info.id} to={"/restaurants/" + res.info.id}>
@@ -152,8 +155,8 @@ const Body = () => {
 
       <hr /> */}
 
-      <div>
-        <h1 className="font-bold text-xl">
+      <div className="my-9 mx-10">
+        <h1 className="font-extrabold text-2xl">
           Restaurants with online food delivery in Indore
         </h1>
 
@@ -269,9 +272,9 @@ const Body = () => {
           </button>
         </div>
 
-        <div className="flex flex-wrap justify-between">
+        <div className="grid grid-cols-4 ">
           {filteredRestaurant.map((restaurant) => (
-            <div className="w-[254px]">
+            <div className="res-card w-[254px]">
               <Link
                 key={restaurant.info.id}
                 to={"/restaurants/" + restaurant.info.id}
