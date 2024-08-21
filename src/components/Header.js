@@ -93,7 +93,7 @@ const Header = () => {
           </li>
 
           <li className="px-4">
-            <Link to="/" className="flex items-center">
+            <Link to="/search" className="flex items-center">
               <span className="mr-2">
                 <svg
                   className="_1GTCc"
