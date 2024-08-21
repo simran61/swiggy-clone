@@ -10,6 +10,7 @@ import "slick-carousel/slick/slick-theme.css";
 import BestRestaurants from "./BestRestaurants";
 import BestCuisines from "./BestCuisines";
 import NearbyRestaurants from "./NearbyRestaurants";
+import Offline from "./Offline";
 
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
@@ -69,10 +70,7 @@ const Body = () => {
   const dish = carouselDishes?.imageGridCards?.info;
   const topRes = topRestaurants?.gridElements?.infoWithStyle?.restaurants;
 
-  if (onlineStatus === false)
-    return (
-      <h1>Looks like you're offline!! Please check your internet connection</h1>
-    );
+  if (onlineStatus === true) return <Offline />;
 
   return listOfRestaurants.length === 0 ? (
     <Shimmer />
