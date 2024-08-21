@@ -5,6 +5,15 @@ import EmptyCart from "./EmptyCart";
 
 const Cart = () => {
   const cartItems = useSelector((store) => store.cart.items);
+  console.log(cartItems);
+
+  const totalPrice = cartItems.reduce((acc, item) => {
+    return (
+      acc + item?.card?.info?.price / 100 ||
+      item?.card?.info?.defaultPrice / 100 ||
+      item?.card?.info?.finalPrice / 100
+    );
+  }, 0);
 
   const dispatch = useDispatch();
 
@@ -14,7 +23,7 @@ const Cart = () => {
 
   return (
     <div className="text-center m-4 p-4">
-      {cartItems.length === 0 && <EmptyCart />}
+      {!cartItems.length && <EmptyCart />}
       {cartItems.length > 0 && (
         <>
           <h1 className="text-2xl font-bold">Cart</h1>
@@ -28,6 +37,7 @@ const Cart = () => {
 
             <ItemList items={cartItems} />
           </div>
+          <h1>Total Price: {totalPrice}</h1>
         </>
       )}
     </div>
