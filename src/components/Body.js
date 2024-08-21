@@ -3,7 +3,6 @@ import Shimmer from "./Shimmer";
 import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
-import UserContext from "../utils/UserContext";
 import CarouselDish from "./CarouselDish";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -42,7 +41,6 @@ const Body = () => {
       json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
 
-    // setCarouselDishes(json?.data?.cards[0]?.card?.card?.imageGridCards?.info);
     setCarouselDishes(json?.data?.cards[0]?.card?.card);
     setTopRestaurants(json?.data?.cards[1]?.card?.card);
     setBestRestaurants(json?.data?.cards[6]?.card?.card);
@@ -76,12 +74,10 @@ const Body = () => {
       <h1>Looks like you're offline!! Please check your internet connection</h1>
     );
 
-  const { loggedInUser, setUserName } = useContext(UserContext);
-
   return listOfRestaurants.length === 0 ? (
     <Shimmer />
   ) : (
-    <div className="mx-10  mx-40">
+    <div className="mx-40">
       <div className="mt-4 mb-14 mx-10">
         <h1 className="font-extrabold text-2xl">
           {carouselDishes.header.title}
@@ -97,7 +93,6 @@ const Body = () => {
 
       <hr />
 
-      {/* top restaurants carousel */}
       <div className="my-9 mx-10">
         <h1 className="font-extrabold text-2xl py-3">
           {topRestaurants?.header?.title}
@@ -117,44 +112,12 @@ const Body = () => {
 
       <hr />
 
-      {/* <div className="filter flex">
-        <div className="search m-4 p-4">
-          <label>UserName: </label>
-          <input
-            type="text"
-            className="border border-solid border-black p-1.5 rounded-lg"
-            value={loggedInUser}
-            onChange={(e) => setUserName(e.target.value)}
-          />
-        </div>
-      </div>
-
-      <hr /> */}
-
       <div className="my-9 mx-10">
         <h1 className="font-extrabold text-2xl">
           Restaurants with online food delivery in Indore
         </h1>
 
         <div className="filter-btns flex my-3">
-          {/* <button className="flex items-center rounded-full py-2 px-3 mr-3 text-sm text-[rgba(2,6,12,0.75)] font-semibold">
-            Filter{" "}
-            <img
-              className="h-3 ml-2"
-              src="https://static-00.iconduck.com/assets.00/filter-icon-2048x1617-97le7v6v.png"
-              alt=""
-            />
-          </button>
-
-          <button className="flex items-center rounded-full py-2 px-3 mr-3 text-sm text-[rgba(2,6,12,0.75)] font-semibold">
-            Sort By{" "}
-            <img
-              className="h-4 ml-2"
-              src="https://static.thenounproject.com/png/1123247-200.png"
-              alt=""
-            />
-          </button> */}
-
           <button
             className="rounded-full py-2 px-3 mr-3 text-sm text-[rgba(2,6,12,0.75)] font-semibold"
             onClick={() => {
@@ -166,10 +129,6 @@ const Body = () => {
           >
             Fast Delivery
           </button>
-
-          {/* <button className="rounded-full py-2 px-3 mr-3 text-sm text-[rgba(2,6,12,0.75)] font-semibold">
-            New on Swiggy
-          </button> */}
 
           <button
             className="rounded-full py-2 px-3 mr-3 text-sm text-[rgba(2,6,12,0.75)] font-semibold"
