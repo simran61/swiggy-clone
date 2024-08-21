@@ -70,7 +70,7 @@ const Body = () => {
   const dish = carouselDishes?.imageGridCards?.info;
   const topRes = topRestaurants?.gridElements?.infoWithStyle?.restaurants;
 
-  if (onlineStatus === true) return <Offline />;
+  if (onlineStatus === false) return <Offline />;
 
   return listOfRestaurants.length === 0 ? (
     <Shimmer />
