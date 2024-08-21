@@ -1,15 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import useCuisines from "../utils/useCuisines";
 // import CarouselCuisine from "./CarouselCuisine";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { CUISINE_IMG } from "../utils/constants";
+import { SUGGESTION_IMG } from "../utils/constants";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const Search = () => {
+  const [searchQuery, setSearchQuery] = useState("");
+  const [suggestions, setSuggestions] = useState([]);
+  const [showSuggestions, setShowSuggestions] = useState(false);
+
   const cuisinesInfo = useCuisines();
   console.log(cuisinesInfo);
 
@@ -25,6 +30,19 @@ const Search = () => {
     slidesToScroll: 3,
   };
 
+  useEffect(() => {
+    getSearchSuggestions();
+  }, [searchQuery]);
+
+  const getSearchSuggestions = async () => {
+    const data = await fetch(
+      `https://www.swiggy.com/dapi/restaurants/search/suggest?lat=22.7195687&lng=75.8577258&str=${searchQuery}&trackingId=undefined&includeIMItem=true`
+    );
+    const json = await data.json();
+    setSuggestions(json?.data?.suggestions);
+    console.log(json?.data?.suggestions);
+  };
+
   return (
     <div className="w-7/12 mx-auto my-12">
       <div className="border p-2.5 flex items-center justify-between">
@@ -32,6 +50,9 @@ const Search = () => {
           className="w-3/4 outline-none"
           placeholder="Search for restaurant and foods"
           type="text"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          onFocus={() => setShowSuggestions(true)}
         />
         <button>
           <svg viewBox="5 -1 12 25" height="17" width="17" fill="#686b78">
@@ -39,6 +60,24 @@ const Search = () => {
           </svg>
         </button>
       </div>
+
+      {showSuggestions && (
+        <div className="m-4">
+          {suggestions?.map((s) => (
+            <div className="flex items-center py-2 hover:bg-blue-50">
+              <img
+                className="h-16 w-16 object-cover rounded-[4px] mr-4"
+                src={SUGGESTION_IMG + s?.cloudinaryId}
+                alt=""
+              />
+              <div>
+                <h2 className="text-[15px] text-[#282c3f]">{s?.text}</h2>
+                <h4 className="text-sm text-[#686b78]">{s?.tagToDisplay}</h4>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
 
       <div>
         <div className="flex justify-between items-center my-8 mx-2">
