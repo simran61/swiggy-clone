@@ -119,30 +119,6 @@ const Body = () => {
 
       {/* <div className="filter flex">
         <div className="search m-4 p-4">
-          <input
-            type="text"
-            placeholder="Seach Restaurant Name..."
-            className="border border-solid border-black p-1.5 rounded-lg"
-            value={searchText}
-            onChange={(e) => {
-              setSearchText(e.target.value);
-            }}
-          />
-          <button
-            className="px-4 py-2 bg-red-200 rounded-lg m-4"
-            onClick={() => {
-              const filteredRestaurant = listOfRestaurants.filter((res) =>
-                res.info.name.toLowerCase().includes(searchText.toLowerCase())
-              );
-
-              setFilteredRestaurant(filteredRestaurant);
-            }}
-          >
-            Search
-          </button>
-        </div>
-        
-        <div className="search m-4 p-4">
           <label>UserName: </label>
           <input
             type="text"
@@ -161,7 +137,7 @@ const Body = () => {
         </h1>
 
         <div className="filter-btns flex my-3">
-          <button className="flex items-center rounded-full py-2 px-3 mr-3 text-sm text-[rgba(2,6,12,0.75)] font-semibold">
+          {/* <button className="flex items-center rounded-full py-2 px-3 mr-3 text-sm text-[rgba(2,6,12,0.75)] font-semibold">
             Filter{" "}
             <img
               className="h-3 ml-2"
@@ -177,7 +153,7 @@ const Body = () => {
               src="https://static.thenounproject.com/png/1123247-200.png"
               alt=""
             />
-          </button>
+          </button> */}
 
           <button
             className="rounded-full py-2 px-3 mr-3 text-sm text-[rgba(2,6,12,0.75)] font-semibold"
@@ -191,9 +167,9 @@ const Body = () => {
             Fast Delivery
           </button>
 
-          <button className="rounded-full py-2 px-3 mr-3 text-sm text-[rgba(2,6,12,0.75)] font-semibold">
+          {/* <button className="rounded-full py-2 px-3 mr-3 text-sm text-[rgba(2,6,12,0.75)] font-semibold">
             New on Swiggy
-          </button>
+          </button> */}
 
           <button
             className="rounded-full py-2 px-3 mr-3 text-sm text-[rgba(2,6,12,0.75)] font-semibold"
@@ -261,6 +237,37 @@ const Body = () => {
           >
             Less than Rs 300
           </button>
+
+          <div className="rounded-full flex items-center justify-between px-4 py-1 mr-3 bg-gray-100 w-64">
+            <input
+              className="bg-gray-100 outline-none placeholder:text-[rgba(2,6,12,0.75)] w-60"
+              type="text"
+              placeholder="Seach for restaurant name..."
+              value={searchText}
+              onChange={(e) => {
+                setSearchText(e.target.value);
+              }}
+            />
+            <button
+              onClick={() => {
+                const filteredRestaurant = listOfRestaurants.filter((res) =>
+                  res.info.name.toLowerCase().includes(searchText.toLowerCase())
+                );
+
+                setFilteredRestaurant(filteredRestaurant);
+              }}
+            >
+              <svg
+                className="ml-3"
+                viewBox="5 -1 12 25"
+                height="17"
+                width="17"
+                fill="#686b78"
+              >
+                <path d="M17.6671481,17.1391632 L22.7253317,22.1973467 L20.9226784,24 L15.7041226,18.7814442 C14.1158488,19.8024478 12.225761,20.3946935 10.1973467,20.3946935 C4.56550765,20.3946935 0,15.8291858 0,10.1973467 C0,4.56550765 4.56550765,0 10.1973467,0 C15.8291858,0 20.3946935,4.56550765 20.3946935,10.1973467 C20.3946935,12.8789625 19.3595949,15.3188181 17.6671481,17.1391632 Z M10.1973467,17.8453568 C14.4212261,17.8453568 17.8453568,14.4212261 17.8453568,10.1973467 C17.8453568,5.97346742 14.4212261,2.54933669 10.1973467,2.54933669 C5.97346742,2.54933669 2.54933669,5.97346742 2.54933669,10.1973467 C2.54933669,14.4212261 5.97346742,17.8453568 10.1973467,17.8453568 Z"></path>
+              </svg>
+            </button>
+          </div>
 
           <button
             className="rounded-full py-2 px-3 mr-3 text-sm text-[#ff5200] font-semibold"
