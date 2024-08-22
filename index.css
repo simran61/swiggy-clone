@@ -160,3 +160,34 @@ hr {
 .res-card:hover {
   transform: scale(0.95);
 }
+
+.promoted-card > .res-card {
+  transition: all 0.2s ease-in-out;
+}
+.promoted-card > .res-card:hover {
+  transform: none;
+}
+
+.fold {
+  position: absolute;
+  top: 18px;
+  left: -8px;
+  background: #22a43a;
+  height: 28px;
+  width: 28px;
+  transform: rotate(45deg);
+}
+
+.ribbion {
+  position: absolute;
+  top: 9px;
+  left: -13.5px;
+  padding: 0.2rem 0.7rem;
+  width: fit-content;
+  background: #30c74c;
+  color: white;
+  font-weight: bold;
+  font-size: 13px;
+  box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.2);
+  z-index: 100;
+}
