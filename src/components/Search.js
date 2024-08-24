@@ -16,6 +16,7 @@ const Search = () => {
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [searchResult, setSearchResult] = useState([]);
+  const [searchedResults, setSearchedResults] = useState(false);
 
   const cuisinesInfo = useCuisines();
   // console.log(cuisinesInfo);
@@ -61,6 +62,7 @@ const Search = () => {
     console.log(dishes);
     setSearchResult(dishes);
     setShowSuggestions(false);
+    setSearchedResults(true);
   };
 
   return (
@@ -99,132 +101,137 @@ const Search = () => {
         </div>
       )}
 
-      <div>
-        <div className="my-4">
-          <button className="text-[#282c3f] font-semibold py-2 px-3.5 mr-2 text-sm border rounded-full">
-            Restaurants
-          </button>
-          <button className="bg-[#282c3f] text-white font-semibold py-2 px-3.5 mr-2 text-sm border rounded-full">
-            Dishes
-          </button>
-        </div>
+      {searchedResults && (
+        <div>
+          <div className="my-4">
+            <button className="text-[#282c3f] font-semibold py-2 px-3.5 mr-2 text-sm border rounded-full">
+              Restaurants
+            </button>
+            <button className="bg-[#282c3f] text-white font-semibold py-2 px-3.5 mr-2 text-sm border rounded-full">
+              Dishes
+            </button>
+          </div>
 
-        <div className="bg-[#f5f6f8]">
-          <div className="flex gap-3 bg-white py-4 border-t mb-8">
-            <div className=" pr-3 border-gray-400 border-r border-dashed">
-              <button className="flex items-center bg-[#fafafa] rounded-md text-xs font-medium px-[10px] py-[5px] text-[#686b78] border">
-                Sort by
-                <img
-                  className="ml-1 h-4"
-                  src="https://static.thenounproject.com/png/1123247-200.png"
-                  alt=""
-                />
+          <div className="bg-[#f5f6f8]">
+            <div className="flex gap-3 bg-white py-4 border-t mb-8">
+              <div className=" pr-3 border-gray-400 border-r border-dashed">
+                <button className="flex items-center bg-[#fafafa] rounded-md text-xs font-medium px-[10px] py-[5px] text-[#686b78] border">
+                  Sort by
+                  <img
+                    className="ml-1 h-4"
+                    src="https://static.thenounproject.com/png/1123247-200.png"
+                    alt=""
+                  />
+                </button>
+              </div>
+              <button className="bg-[#fafafa] rounded-md text-xs font-medium px-[10px] py-[5px] text-[#686b78] border">
+                Fast Delivery
+              </button>
+              <button className="bg-[#fafafa] rounded-md text-xs font-medium px-[10px] py-[5px] text-[#686b78] border">
+                Veg
+              </button>
+              <button className="bg-[#fafafa] rounded-md text-xs font-medium px-[10px] py-[5px] text-[#686b78] border">
+                Non-Veg
+              </button>
+              <button className="bg-[#fafafa] rounded-md text-xs font-medium px-[10px] py-[5px] text-[#686b78] border">
+                Rated 4+
+              </button>
+              <button className="bg-[#fafafa] rounded-md text-xs font-medium px-[10px] py-[5px] text-[#686b78] border">
+                Rs 100-Rs 250
+              </button>
+              <button className="bg-[#fafafa] rounded-md text-xs font-medium px-[10px] py-[5px] text-[#686b78] border">
+                Less than Rs 100
+              </button>
+              <button className="bg-[#fafafa] rounded-md text-xs font-medium px-[10px] py-[5px] text-[#686b78] border">
+                Gourmet
+              </button>
+              <button className="bg-[#fafafa] rounded-md text-xs font-medium px-[10px] py-[5px] text-[#686b78] border">
+                Spicy
               </button>
             </div>
-            <button className="bg-[#fafafa] rounded-md text-xs font-medium px-[10px] py-[5px] text-[#686b78] border">
-              Fast Delivery
-            </button>
-            <button className="bg-[#fafafa] rounded-md text-xs font-medium px-[10px] py-[5px] text-[#686b78] border">
-              Veg
-            </button>
-            <button className="bg-[#fafafa] rounded-md text-xs font-medium px-[10px] py-[5px] text-[#686b78] border">
-              Non-Veg
-            </button>
-            <button className="bg-[#fafafa] rounded-md text-xs font-medium px-[10px] py-[5px] text-[#686b78] border">
-              Rated 4+
-            </button>
-            <button className="bg-[#fafafa] rounded-md text-xs font-medium px-[10px] py-[5px] text-[#686b78] border">
-              Rs 100-Rs 250
-            </button>
-            <button className="bg-[#fafafa] rounded-md text-xs font-medium px-[10px] py-[5px] text-[#686b78] border">
-              Less than Rs 100
-            </button>
-            <button className="bg-[#fafafa] rounded-md text-xs font-medium px-[10px] py-[5px] text-[#686b78] border">
-              Gourmet
-            </button>
-            <button className="bg-[#fafafa] rounded-md text-xs font-medium px-[10px] py-[5px] text-[#686b78] border">
-              Spicy
-            </button>
-          </div>
 
-          <div className="flex flex-wrap justify-between m-3">
-            {searchResult.map((c) => (
-              <div className="dish-card w-[410px] h-[277px] bg-white py-6 px-4 rounded-3xl mb-6">
-                <div className="flex justify-between items-center border-b border-dotted pb-3">
-                  <div className="">
-                    <h3 className="text-[#686b78] font-bold text-sm">
-                      {c?.card?.card?.restaurant?.info?.name}
-                    </h3>
-                    <div className="flex items-center text-[13px] text-[#7e808c]">
-                      <svg
-                        width="12"
-                        height="12"
-                        viewBox="0 0 12 12"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        role="img"
-                        fillColor="#686b78"
-                      >
-                        <rect width="12" height="12" fill="white"></rect>
-                        <path
-                          d="M5.67163 3.99166C6.22068 2.34179 6.49521 1.51686 7 1.51686C7.50479 1.51686 7.77932 2.34179 8.32837 3.99166L8.65248 4.96556H9.60668C11.4122 4.96556 12.315 4.96556 12.4703 5.45302C12.6256 5.94049 11.8893 6.4628 10.4167 7.50744L9.67376 8.03444L9.97544 8.94095C10.5325 10.615 10.8111 11.452 10.4033 11.754C9.99553 12.056 9.27604 11.5457 7.83705 10.5249L7 9.93112L6.16295 10.5249C4.72396 11.5457 4.00447 12.056 3.5967 11.754C3.18893 11.452 3.46747 10.615 4.02456 8.94095L4.04557 8.87783C4.18081 8.47145 4.24843 8.26825 4.18684 8.08006C4.12525 7.89187 3.94958 7.76725 3.59824 7.51802C2.11566 6.46633 1.37437 5.94049 1.52971 5.45302C1.68504 4.96556 2.5878 4.96556 4.39332 4.96556H5.34752L5.67163 3.99166Z"
-                          fill="#686b78"
-                        ></path>
-                      </svg>
-                      <span className="ml-1">
-                        {c?.card?.card?.info?.ratings?.aggregatedRating?.rating}
-                      </span>
-                      <span className="mx-1"> . </span>
-                      <span>
-                        {c?.card?.card?.restaurant?.info?.sla?.slaString}
-                      </span>
+            <div className="flex flex-wrap justify-between m-3">
+              {searchResult.map((c) => (
+                <div className="dish-card w-[410px] h-[277px] bg-white py-6 px-4 rounded-3xl mb-6">
+                  <div className="flex justify-between items-center border-b border-dotted pb-3">
+                    <div className="">
+                      <h3 className="text-[#686b78] font-bold text-sm">
+                        {c?.card?.card?.restaurant?.info?.name}
+                      </h3>
+                      <div className="flex items-center text-[13px] text-[#7e808c]">
+                        <svg
+                          width="12"
+                          height="12"
+                          viewBox="0 0 12 12"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                          role="img"
+                          fillColor="#686b78"
+                        >
+                          <rect width="12" height="12" fill="white"></rect>
+                          <path
+                            d="M5.67163 3.99166C6.22068 2.34179 6.49521 1.51686 7 1.51686C7.50479 1.51686 7.77932 2.34179 8.32837 3.99166L8.65248 4.96556H9.60668C11.4122 4.96556 12.315 4.96556 12.4703 5.45302C12.6256 5.94049 11.8893 6.4628 10.4167 7.50744L9.67376 8.03444L9.97544 8.94095C10.5325 10.615 10.8111 11.452 10.4033 11.754C9.99553 12.056 9.27604 11.5457 7.83705 10.5249L7 9.93112L6.16295 10.5249C4.72396 11.5457 4.00447 12.056 3.5967 11.754C3.18893 11.452 3.46747 10.615 4.02456 8.94095L4.04557 8.87783C4.18081 8.47145 4.24843 8.26825 4.18684 8.08006C4.12525 7.89187 3.94958 7.76725 3.59824 7.51802C2.11566 6.46633 1.37437 5.94049 1.52971 5.45302C1.68504 4.96556 2.5878 4.96556 4.39332 4.96556H5.34752L5.67163 3.99166Z"
+                            fill="#686b78"
+                          ></path>
+                        </svg>
+                        <span className="ml-1">
+                          {
+                            c?.card?.card?.info?.ratings?.aggregatedRating
+                              ?.rating
+                          }
+                        </span>
+                        <span className="mx-1"> . </span>
+                        <span>
+                          {c?.card?.card?.restaurant?.info?.sla?.slaString}
+                        </span>
+                      </div>
                     </div>
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                      <path
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M13.2307 5.53999C12.9769 5.28615 12.5653 5.28615 12.3115 5.53999C12.0576 5.79383 12.0576 6.20539 12.3115 6.45923L17.2019 11.3496L5.39414 11.3496C5.03516 11.3496 4.74414 11.6406 4.74414 11.9996C4.74414 12.3586 5.03516 12.6496 5.39414 12.6496L17.2019 12.6496L12.3115 17.54C12.0576 17.7938 12.0576 18.2054 12.3115 18.4592C12.5653 18.7131 12.9769 18.7131 13.2307 18.4592L18.949 12.741C19.3584 12.3315 19.3584 11.6677 18.949 11.2583L13.2307 5.53999Z"
+                        fill="#868891"
+                      ></path>
+                    </svg>
                   </div>
-                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M13.2307 5.53999C12.9769 5.28615 12.5653 5.28615 12.3115 5.53999C12.0576 5.79383 12.0576 6.20539 12.3115 6.45923L17.2019 11.3496L5.39414 11.3496C5.03516 11.3496 4.74414 11.6406 4.74414 11.9996C4.74414 12.3586 5.03516 12.6496 5.39414 12.6496L17.2019 12.6496L12.3115 17.54C12.0576 17.7938 12.0576 18.2054 12.3115 18.4592C12.5653 18.7131 12.9769 18.7131 13.2307 18.4592L18.949 12.741C19.3584 12.3315 19.3584 11.6677 18.949 11.2583L13.2307 5.53999Z"
-                      fill="#868891"
-                    ></path>
-                  </svg>
-                </div>
 
-                <div className="flex justify-between items-center my-6">
-                  <div>
-                    <img className="h-4" src={veg} alt="" />
-                    <h1 className="font-bold text-lg text-[#02060cbf]">
-                      {c?.card?.card?.info?.name}
-                    </h1>
-                    <h2 className="font-bold tracking-[-0.5px]">
-                      ₹ {c?.card?.card?.info?.price / 100}
-                    </h2>
-                    <button className="flex items-center border rounded-full font-bold mt-3 py-1 px-2 text-[#02060c99] text-[13px] ">
-                      More Details
+                  <div className="flex justify-between items-center my-6">
+                    <div>
+                      <img className="h-4" src={veg} alt="" />
+                      <h1 className="font-bold text-lg text-[#02060cbf]">
+                        {c?.card?.card?.info?.name}
+                      </h1>
+                      <h2 className="font-bold tracking-[-0.5px]">
+                        ₹ {c?.card?.card?.info?.price / 100}
+                      </h2>
+                      <button className="flex items-center border rounded-full font-bold mt-3 py-1 px-2 text-[#02060c99] text-[13px] ">
+                        More Details
+                        <img
+                          className="h-2.5 ml-1 opacity-50"
+                          src="https://cdn-icons-png.flaticon.com/512/32/32213.png"
+                          alt=""
+                        />
+                      </button>
+                    </div>
+
+                    <div className="relative">
                       <img
-                        className="h-2.5 ml-1 opacity-50"
-                        src="https://cdn-icons-png.flaticon.com/512/32/32213.png"
+                        className="w-[156px] h-[144px] rounded-lg"
+                        src={SEARCH_RESULTS_IMG + c?.card?.card?.info?.imageId}
                         alt=""
                       />
-                    </button>
-                  </div>
-
-                  <div className="relative">
-                    <img
-                      className="w-[156px] h-[144px] rounded-lg"
-                      src={SEARCH_RESULTS_IMG + c?.card?.card?.info?.imageId}
-                      alt=""
-                    />
-                    <button className="text-lg px-7 py-1 text-green-600 font-bold rounded-md bg-white shadow-sm absolute -bottom-4 left-[19%] border">
-                      ADD
-                    </button>
+                      <button className="text-lg px-7 py-1 text-green-600 font-bold rounded-md bg-white shadow-sm absolute -bottom-4 left-[19%] border">
+                        ADD
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
-      </div>
+      )}
 
       <div>
         <div className="flex justify-between items-center my-8 mx-2">
