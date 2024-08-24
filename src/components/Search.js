@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import useCuisines from "../utils/useCuisines";
-// import CarouselCuisine from "./CarouselCuisine";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -19,11 +18,9 @@ const Search = () => {
   const [searchedResults, setSearchedResults] = useState(false);
 
   const cuisinesInfo = useCuisines();
-  // console.log(cuisinesInfo);
 
   const cuisines =
     cuisinesInfo?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.info;
-  // console.log(cuisines);
 
   var settings = {
     dots: false,
@@ -32,8 +29,6 @@ const Search = () => {
     slidesToShow: 6.8,
     slidesToScroll: 3,
   };
-
-  console.log(searchQuery);
 
   useEffect(() => {
     getSearchSuggestions();
@@ -45,12 +40,11 @@ const Search = () => {
     );
     const json = await data.json();
     setSuggestions(json?.data?.suggestions);
-    // console.log(json?.data?.suggestions);
   };
 
-  const searchResults = async () => {
+  const searchResults = async (searchName) => {
     const data = await fetch(
-      `https://www.swiggy.com/dapi/restaurants/search/v3?lat=22.7195687&lng=75.8577258&str=${searchQuery}&trackingId=null&submitAction=SUGGESTION&queryUniqueId=9375ec94-48ff-c677-9afe-3e101dd72dec&metaData=%7B%22type%22%3A%22DISH%22%2C%22data%22%3A%7B%22vegIdentifier%22%3A%22VEG%22%2C%22cloudinaryId%22%3A%22athbxylw1pvnebsbosky%22%2C%22dishFamilyId%22%3A%22846649%22%2C%22dishFamilyIds%22%3A%5B%22846649%22%5D%7D%2C%22businessCategory%22%3A%22SWIGGY_FOOD%22%2C%22displayLabel%22%3A%22Dish%22%7D`
+      `https://www.swiggy.com/dapi/restaurants/search/v3?lat=22.7195687&lng=75.8577258&str=${searchName}&trackingId=null&submitAction=SUGGESTION&queryUniqueId=9375ec94-48ff-c677-9afe-3e101dd72dec&metaData=%7B%22type%22%3A%22DISH%22%2C%22data%22%3A%7B%22vegIdentifier%22%3A%22VEG%22%2C%22cloudinaryId%22%3A%22athbxylw1pvnebsbosky%22%2C%22dishFamilyId%22%3A%22846649%22%2C%22dishFamilyIds%22%3A%5B%22846649%22%5D%7D%2C%22businessCategory%22%3A%22SWIGGY_FOOD%22%2C%22displayLabel%22%3A%22Dish%22%7D`
     );
     const json = await data.json();
     const dishes =
@@ -59,10 +53,19 @@ const Search = () => {
           c.card?.card?.["@type"] ===
           "type.googleapis.com/swiggy.presentation.food.v2.Dish"
       );
-    console.log(dishes);
     setSearchResult(dishes);
     setShowSuggestions(false);
     setSearchedResults(true);
+  };
+
+  const handleOnSuggestionClick = (suggestionName) => {
+    searchResults(suggestionName);
+  };
+
+  const handleOnEnter = (e) => {
+    if (e.key === "Enter") {
+      searchResults(e.target.value);
+    }
   };
 
   return (
@@ -75,8 +78,9 @@ const Search = () => {
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           onFocus={() => setShowSuggestions(true)}
+          onKeyUp={handleOnEnter}
         />
-        <button onClick={searchResults}>
+        <button onClick={() => searchResults(searchQuery)}>
           <svg viewBox="5 -1 12 25" height="17" width="17" fill="#686b78">
             <path d="M17.6671481,17.1391632 L22.7253317,22.1973467 L20.9226784,24 L15.7041226,18.7814442 C14.1158488,19.8024478 12.225761,20.3946935 10.1973467,20.3946935 C4.56550765,20.3946935 0,15.8291858 0,10.1973467 C0,4.56550765 4.56550765,0 10.1973467,0 C15.8291858,0 20.3946935,4.56550765 20.3946935,10.1973467 C20.3946935,12.8789625 19.3595949,15.3188181 17.6671481,17.1391632 Z M10.1973467,17.8453568 C14.4212261,17.8453568 17.8453568,14.4212261 17.8453568,10.1973467 C17.8453568,5.97346742 14.4212261,2.54933669 10.1973467,2.54933669 C5.97346742,2.54933669 2.54933669,5.97346742 2.54933669,10.1973467 C2.54933669,14.4212261 5.97346742,17.8453568 10.1973467,17.8453568 Z"></path>
           </svg>
@@ -86,7 +90,10 @@ const Search = () => {
       {showSuggestions && (
         <div className="m-4">
           {suggestions?.map((s) => (
-            <div className="flex items-center py-2 hover:bg-blue-50">
+            <div
+              className="flex items-center py-2 hover:bg-blue-50"
+              onClick={() => handleOnSuggestionClick(s?.text)}
+            >
               <img
                 className="h-16 w-16 object-cover rounded-[4px] mr-4"
                 src={SUGGESTION_IMG + s?.cloudinaryId}
