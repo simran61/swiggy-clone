@@ -195,3 +195,7 @@ hr {
 .dish-card {
   box-shadow: 0 4px 29px #e8e8e8;
 }
+
+.cart-steps {
+  box-shadow: 0 3px 5px 0 rgba(40, 44, 63, 0.4);
+}
