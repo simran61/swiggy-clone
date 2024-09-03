@@ -68,6 +68,12 @@ const Search = () => {
     }
   };
 
+  // const recentlyClickedObj = {};
+  // const recentSearchStorageData = localStorage.getItem("recentSearch") ?? [];
+  // console.log(recentSearchStorageData);
+  // recentSearchStorageData.unshift(recentlyClickedObj);
+  // localStorage.setItem("recentSearch", recentSearchStorageData);
+
   return (
     <div className="w-[860px] mx-auto my-12">
       <div className="border p-2.5 flex items-center justify-between">

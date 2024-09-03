@@ -7,7 +7,7 @@ import HalfOfferCard from "./HalfOfferCard";
 import menuLeft from "../assets/menu-left.png";
 import menuRight from "../assets/menu-right.png";
 import vegIcon from "../assets/veg.png";
-import nonVeg from "../assets/nonVeg.png";
+import nonVeg from "../assets/non-veg.png";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -19,7 +19,7 @@ const RestaurantMenu = () => {
   const resInfo = useRestaurantMenu(resId);
   const [showIndex, setShowIndex] = useState(null);
 
-  if (resInfo === null) return <Shimmer />;
+  // if (resInfo === null) return <Shimmer />;
 
   const {
     areaName,
