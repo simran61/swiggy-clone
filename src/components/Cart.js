@@ -80,7 +80,7 @@ const Cart = () => {
                     <div className="ml-[14px]">
                       <div>
                         <h1 className="text-[17px] font-semibold">
-                          Burger King
+                          Your Order
                         </h1>
                         <h4 className="text-[13px] text-[#686b78] -mt-1.5 mb-1">
                           Indore

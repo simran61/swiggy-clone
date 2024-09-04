@@ -19,6 +19,7 @@ const RestaurantMenu = () => {
   const resInfo = useRestaurantMenu(resId);
   const [showIndex, setShowIndex] = useState(null);
 
+  console.log(resInfo);
   // if (resInfo === null) return <Shimmer />;
 
   const {
@@ -33,9 +34,10 @@ const RestaurantMenu = () => {
     cuisines,
     costForTwoMessage,
     feeDetails,
-  } = resInfo?.cards[2]?.card?.card?.info;
+  } = resInfo?.cards[2]?.card?.card?.info || {};
 
-  const { offers } = resInfo?.cards[3]?.card?.card?.gridElements?.infoWithStyle;
+  const { offers } =
+    resInfo?.cards[3]?.card?.card?.gridElements?.infoWithStyle || {};
 
   const categories =
     resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
@@ -56,7 +58,7 @@ const RestaurantMenu = () => {
       (c) =>
         c?.card?.card?.["@type"] ===
         "type.googleapis.com/swiggy.presentation.food.v2.MenuCarousel"
-    );
+    ) || [];
 
   const topBanners = topPicks[0]?.card?.card?.carousel;
 
@@ -130,7 +132,7 @@ const RestaurantMenu = () => {
             <p className="font-bold">{costForTwoMessage}</p>
           </div>
           <span className="text-[#ff5200] font-bold underline text-sm">
-            {cuisines.join(", ")}
+            {cuisines?.join(", ")}
           </span>
           <div className="flex my-3 w-full text-sm">
             <div class="sc-fmzyuX jICcAR mr-2">
@@ -143,7 +145,7 @@ const RestaurantMenu = () => {
                 <span className="font-bold mr-2">Outlet </span>{" "}
                 <span className="text-[#02060c99]">{areaName}</span>
               </p>
-              <span className="font-bold">{sla.slaString.toLowerCase()}</span>
+              <span className="font-bold">{sla?.slaString?.toLowerCase()}</span>
             </div>
           </div>
           <hr className="my-3" />
@@ -225,14 +227,14 @@ const RestaurantMenu = () => {
           </div>
         )}
 
-        {nestedCategories.map((nestedCategory, index) => (
+        {nestedCategories?.map((nestedCategory, index) => (
           <RestaurantNestedCategory
             key={nestedCategory?.card?.card?.title}
             data={nestedCategory?.card?.card}
           />
         ))}
 
-        {categories.map((category, index) => (
+        {categories?.map((category, index) => (
           <div>
             <RestaurantCategory
               key={category?.card?.card?.title}
