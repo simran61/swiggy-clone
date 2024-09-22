@@ -10,7 +10,7 @@ const CartItem = ({ items }) => {
         <div className="flex justify-between py-2.5">
           <div className="flex basis-3/5 items-center">
             <img className="h-4" src={veg} alt="" />
-            <h5 className="text-sm ml-[10px]">{item?.card?.info?.name}</h5>
+            <h5 className="text-sm ml-[10px]">{item?.name}</h5>
           </div>
           <div className="flex items-center justify-between basis-5/12">
             <div className="flex justify-around items-center font-bold border text-[#60b246] w-[70px] h-[30px] mr-2">
@@ -20,9 +20,9 @@ const CartItem = ({ items }) => {
             </div>
             <h5 className="text-[#535665] text-[13px]">
               ₹
-              {item?.card?.info?.price / 100 ||
-                item?.card?.info?.defaultPrice / 100 ||
-                item?.card?.info?.finalPrice / 100}
+              {item?.price / 100 ||
+                item?.defaultPrice / 100 ||
+                item?.finalPrice / 100}
             </h5>
           </div>
         </div>

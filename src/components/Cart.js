@@ -13,9 +13,9 @@ const Cart = () => {
 
   const totalPrice = cartItems.reduce((acc, item) => {
     return (
-      acc + item?.card?.info?.price / 100 ||
-      item?.card?.info?.defaultPrice / 100 ||
-      item?.card?.info?.finalPrice / 100
+      acc + item?.price / 100 ||
+      item?.defaultPrice / 100 ||
+      item?.finalPrice / 100
     );
   }, 0);
 

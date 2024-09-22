@@ -9,8 +9,11 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import veg from "../assets/veg-icon.png";
+import { addItem } from "../utils/cartSlice";
+import { useDispatch } from "react-redux";
 
 const Search = () => {
+  const dispatch = useDispatch();
   const [searchQuery, setSearchQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
@@ -73,6 +76,11 @@ const Search = () => {
   // console.log(recentSearchStorageData);
   // recentSearchStorageData.unshift(recentlyClickedObj);
   // localStorage.setItem("recentSearch", recentSearchStorageData);
+
+  const handleAddItem = (item) => {
+    console.log(item);
+    dispatch(addItem(item?.card?.card?.info));
+  };
 
   return (
     <div className="w-[860px] mx-auto my-12">
@@ -234,7 +242,10 @@ const Search = () => {
                         src={SEARCH_RESULTS_IMG + c?.card?.card?.info?.imageId}
                         alt=""
                       />
-                      <button className="text-lg px-7 py-1 text-green-600 font-bold rounded-md bg-white shadow-sm absolute -bottom-4 left-[19%] border">
+                      <button
+                        onClick={() => handleAddItem(c)}
+                        className="text-lg px-7 py-1 text-green-600 font-bold rounded-md bg-white shadow-sm absolute -bottom-4 left-[19%] border"
+                      >
                         ADD
                       </button>
                     </div>
