@@ -34,13 +34,16 @@ const Search = () => {
   };
 
   useEffect(() => {
-    getSearchSuggestions();
+    if (searchQuery !== "") getSearchSuggestions();
   }, [searchQuery]);
 
   const getSearchSuggestions = async () => {
     const data = await fetch(
-      `https://www.swiggy.com/dapi/restaurants/search/suggest?lat=22.7195687&lng=75.8577258&str=${searchQuery}&trackingId=undefined&includeIMItem=true`
+      "http://localhost:5000/api/search-sugggestions?searchQuery=" + searchQuery
+      // `https://www.swiggy.com/dapi/restaurants/search/suggest?lat=22.7195687&lng=75.8577258&str=${searchQuery}&trackingId=undefined&includeIMItem=true`
     );
+    console.log(data);
+
     const json = await data.json();
     setSuggestions(json?.data?.suggestions);
   };
