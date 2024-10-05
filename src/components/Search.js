@@ -50,8 +50,11 @@ const Search = () => {
 
   const searchResults = async (searchName) => {
     const data = await fetch(
-      `https://www.swiggy.com/dapi/restaurants/search/v3?lat=22.7195687&lng=75.8577258&str=${searchName}&trackingId=null&submitAction=SUGGESTION&queryUniqueId=9375ec94-48ff-c677-9afe-3e101dd72dec&metaData=%7B%22type%22%3A%22DISH%22%2C%22data%22%3A%7B%22vegIdentifier%22%3A%22VEG%22%2C%22cloudinaryId%22%3A%22athbxylw1pvnebsbosky%22%2C%22dishFamilyId%22%3A%22846649%22%2C%22dishFamilyIds%22%3A%5B%22846649%22%5D%7D%2C%22businessCategory%22%3A%22SWIGGY_FOOD%22%2C%22displayLabel%22%3A%22Dish%22%7D`
+      "http://localhost:5000/api/search-results?searchQuery=" + searchName
+      // `https://www.swiggy.com/dapi/restaurants/search/v3?lat=22.7195687&lng=75.8577258&str=${searchName}&trackingId=null&submitAction=SUGGESTION&queryUniqueId=9375ec94-48ff-c677-9afe-3e101dd72dec&metaData=%7B%22type%22%3A%22DISH%22%2C%22data%22%3A%7B%22vegIdentifier%22%3A%22VEG%22%2C%22cloudinaryId%22%3A%22athbxylw1pvnebsbosky%22%2C%22dishFamilyId%22%3A%22846649%22%2C%22dishFamilyIds%22%3A%5B%22846649%22%5D%7D%2C%22businessCategory%22%3A%22SWIGGY_FOOD%22%2C%22displayLabel%22%3A%22Dish%22%7D`
     );
+    console.log(data);
+
     const json = await data.json();
     const dishes =
       json?.data?.cards[1]?.groupedCard?.cardGroupMap?.DISH?.cards.filter(
