@@ -73,7 +73,7 @@ const Body = () => {
 
   if (onlineStatus === false) return <Offline />;
 
-  return listOfRestaurants.length === 0 ? (
+  return listOfRestaurants?.length === 0 ? (
     <Shimmer />
   ) : (
     <div className="mx-40">
@@ -83,7 +83,7 @@ const Body = () => {
         </h1>
         <div className="mr-4">
           <Slider {...settings}>
-            {dish.map((d) => (
+            {dish?.map((d) => (
               <CarouselDish dishData={d} />
             ))}
           </Slider>
@@ -98,7 +98,7 @@ const Body = () => {
         </h1>
         <div className="">
           <Slider {...settings1}>
-            {topRes.map((res) => (
+            {topRes?.map((res) => (
               <Link key={res.info.id} to={"/restaurants/" + res.info.id}>
                 <div className="w-[273px]">
                   <RestaurantCard resData={res?.info} />
@@ -120,7 +120,7 @@ const Body = () => {
           <button
             className="rounded-full py-2 px-3 mr-3 text-sm text-[rgba(2,6,12,0.75)] font-semibold"
             onClick={() => {
-              const filteredList = listOfRestaurants.filter(
+              const filteredList = listOfRestaurants?.filter(
                 (res) => res.info.sla.deliveryTime < 30
               );
               setFilteredRestaurant(filteredList);
@@ -132,7 +132,7 @@ const Body = () => {
           <button
             className="rounded-full py-2 px-3 mr-3 text-sm text-[rgba(2,6,12,0.75)] font-semibold"
             onClick={() => {
-              const filteredList = listOfRestaurants.filter(
+              const filteredList = listOfRestaurants?.filter(
                 (res) => res.info.avgRating > 4
               );
               setFilteredRestaurant(filteredList);
@@ -144,7 +144,7 @@ const Body = () => {
           <button
             className="rounded-full py-2 px-3 mr-3 text-sm text-[rgba(2,6,12,0.75)] font-semibold"
             onClick={() => {
-              const filteredList = listOfRestaurants.filter(
+              const filteredList = listOfRestaurants?.filter(
                 (res) => res.info.veg == true
               );
               setFilteredRestaurant(filteredList);
@@ -156,7 +156,7 @@ const Body = () => {
           <button
             className="rounded-full py-2 px-3 mr-3 text-sm text-[rgba(2,6,12,0.75)] font-semibold"
             onClick={() => {
-              const filteredList = listOfRestaurants.filter((res) =>
+              const filteredList = listOfRestaurants?.filter((res) =>
                 res.info.aggregatedDiscountInfoV3 == undefined ? null : res
               );
               setFilteredRestaurant(filteredList);
@@ -168,7 +168,7 @@ const Body = () => {
           <button
             className="rounded-full py-2 px-3 mr-3 text-sm text-[rgba(2,6,12,0.75)] font-semibold"
             onClick={() => {
-              const filteredList = listOfRestaurants.filter((res) => {
+              const filteredList = listOfRestaurants?.filter((res) => {
                 const costParts = res.info.costForTwo.split(" ");
                 const costNumber = parseInt(costParts[0].replace("₹", ""), 10);
                 return costNumber >= 300 && costNumber <= 600 ? res : null;
@@ -183,7 +183,7 @@ const Body = () => {
             className="rounded-full py-2 px-3 mr-3 text-sm text-[rgba(2,6,12,0.75)] font-semibold"
             onClick={() => {
               console.log(listOfRestaurants);
-              const filteredList = listOfRestaurants.filter((res) => {
+              const filteredList = listOfRestaurants?.filter((res) => {
                 const costParts = res.info.costForTwo.split(" ");
                 const costNumber = parseInt(costParts[0].replace("₹", ""), 10);
                 return costNumber < 300 ? res : null;
@@ -208,7 +208,7 @@ const Body = () => {
             />
             <button
               onClick={() => {
-                const filteredRestaurant = listOfRestaurants.filter((res) =>
+                const filteredRestaurant = listOfRestaurants?.filter((res) =>
                   res.info.name.toLowerCase().includes(searchText.toLowerCase())
                 );
 
@@ -238,7 +238,7 @@ const Body = () => {
         </div>
 
         <div className="grid grid-cols-4 ">
-          {filteredRestaurant.map((restaurant) => (
+          {filteredRestaurant?.map((restaurant) => (
             <div className="res-card w-[254px]">
               <Link
                 key={restaurant.info.id}
