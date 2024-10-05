@@ -1,16 +1,54 @@
 import { CDN_URL } from "../utils/constants";
-import { addItem } from "../utils/cartSlice.js";
+import { addItem, updateQuantity } from "../utils/cartSlice.js";
 import { useDispatch } from "react-redux";
+import { useState, useEffect } from "react";
 
 const ItemList = ({ items }) => {
   const dispatch = useDispatch();
+  const [selectedItems, setSelectedItems] = useState(null);
+  const [itemNumber, setItemNumber] = useState(1);
+  const [showInc, setShowInc] = useState(null);
 
   const handleAddItem = (item) => {
-    console.log(item);
-    dispatch(addItem(item?.card?.info));
+    let ids = item.card.info.id;
+    setSelectedItems((prevState) => ({
+      ...prevState,
+      [ids]: 1,
+    }));
+    setShowInc((prevState) => ({
+      ...prevState,
+      [ids]: true,
+    }));
+    dispatch(addItem({ items: item?.card?.info }));
   };
 
-  console.log(items);
+  useEffect(() => {
+    dispatch(updateQuantity({ quantity: selectedItems }));
+  }, [selectedItems]);
+
+  const incrementItem = async (item) => {
+    // setItemNumber(itemNumber + 1);
+
+    let ids = item.card.info.id;
+    await setSelectedItems((prevState) => ({
+      ...prevState,
+      [ids]: selectedItems[ids] + 1,
+    }));
+  };
+  const decrementItem = (item) => {
+    // setItemNumber(itemNumber - 1);
+    let ids = item.card.info.id;
+    setSelectedItems((prevState) => ({
+      ...prevState,
+      [ids]: selectedItems[ids] - 1 > 0 ? selectedItems[ids] - 1 : 0,
+    }));
+    setShowInc((prevState) => ({
+      ...prevState,
+      [ids]: selectedItems[ids] > 1 ? true : false,
+      // [ids]: false,
+    }));
+    dispatch(addItem({ items: item?.card?.info }));
+  };
 
   return (
     <div>
@@ -91,12 +129,35 @@ const ItemList = ({ items }) => {
               className="w-full h-[144px] object-cover rounded-xl"
               alt=""
             />
-            <button
-              className="text-lg px-6 py-1 text-green-600 font-bold rounded-md bg-white shadow-md absolute -bottom-4 left-[23%] border"
-              onClick={() => handleAddItem(item)}
-            >
-              ADD
-            </button>
+            {showInc ? (
+              !showInc.hasOwnProperty(item.card.info.id) ||
+              !showInc[item.card.info.id] ? (
+                <button
+                  className="text-lg px-6 py-1 text-green-600 font-bold rounded-md bg-white shadow-md absolute -bottom-4 left-[23%] border"
+                  onClick={() => handleAddItem(item)}
+                >
+                  ADD
+                </button>
+              ) : null
+            ) : (
+              <button
+                className="text-lg px-6 py-1 text-green-600 font-bold rounded-md bg-white shadow-md absolute -bottom-4 left-[23%] border"
+                onClick={() => handleAddItem(item)}
+              >
+                ADD
+              </button>
+            )}
+            {showInc && showInc[item.card.info.id] ? (
+              <div className="text-lg px-4 py-1 text-green-600 font-bold rounded-md bg-white shadow-md absolute -bottom-4 left-[21%] border">
+                <button onClick={() => decrementItem(item)}>-</button>
+                <span className="px-4">
+                  {selectedItems && selectedItems[item.card.info.id]
+                    ? selectedItems[item.card.info.id]
+                    : 0}
+                </span>
+                <button onClick={() => incrementItem(item)}>+</button>
+              </div>
+            ) : null}
           </div>
         </div>
       ))}

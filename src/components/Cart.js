@@ -8,14 +8,16 @@ import offer from "../assets/offer.png";
 import CartItem from "./CartItem";
 
 const Cart = () => {
-  const cartItems = useSelector((store) => store.cart.items);
-  console.log(cartItems);
+  const { items, quantity } = useSelector((store) => store.cart);
+  console.log(items, quantity);
 
-  const totalPrice = cartItems.reduce((acc, item) => {
+  const totalPrice = items?.reduce((acc, item) => {
     return (
-      acc + item?.price / 100 ||
-      item?.defaultPrice / 100 ||
-      item?.finalPrice / 100
+      acc +
+      (item?.price / 100 ||
+        item?.defaultPrice / 100 ||
+        item?.finalPrice / 100) *
+        quantity[item.id]
     );
   }, 0);
 
@@ -27,8 +29,8 @@ const Cart = () => {
 
   return (
     <>
-      {!cartItems.length && <EmptyCart />}
-      {cartItems.length > 0 && (
+      {!items?.length && <EmptyCart />}
+      {items?.length > 0 && (
         <div className="bg-[#E9ECEE] p-8">
           <div className="w-4/5 flex justify-center m-auto">
             <div className="mr-5 relative">
@@ -99,7 +101,7 @@ const Cart = () => {
                 </div>
                 <div className="h-[460px] overflow-y-scroll pl-[30px]">
                   <div className="pr-[30px]">
-                    <CartItem items={cartItems} />
+                    <CartItem items={items} quantity={quantity} />
 
                     <div className="bg-[#f9f9f9] p-4 flex items-center mt-3">
                       <svg className="w-3" viewBox="0 0 32 32">
