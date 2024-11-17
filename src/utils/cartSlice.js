@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { logDOM } from "@testing-library/react";
 
 const cartSlice = createSlice({
   name: "cart",
@@ -16,6 +17,7 @@ const cartSlice = createSlice({
       console.log(index);
 
       if (index === -1) {
+        console.log(action.payload.items);
         state.items.push(action.payload.items);
       } else {
         console.log("Object already exists");

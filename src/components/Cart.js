@@ -17,7 +17,7 @@ const Cart = () => {
       (item?.price / 100 ||
         item?.defaultPrice / 100 ||
         item?.finalPrice / 100) *
-        quantity[item.id]
+        quantity[item?.id]
     );
   }, 0);
 

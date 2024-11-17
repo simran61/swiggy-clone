@@ -15,10 +15,11 @@ export const SEARCH_RESULTS_IMG =
 
 export const LOGO_URL = "https://cdn.worldvectorlogo.com/logos/swiggy-1.svg";
 
-export const MENU_API = "http://localhost:5000/api/menu?resId=";
+export const MENU_API =
+  "https://swiggy-backend-9o8y.onrender.com/api/menu?resId=";
 // "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=22.7195687&lng=75.8577258&restaurantId=";
 
-export const CUISINES = "http://localhost:5000/api/cuisines";
+export const CUISINES = "https://swiggy-backend-9o8y.onrender.com/api/cuisines";
 // "https://www.swiggy.com/dapi/landing/PRE_SEARCH?lat=22.7195687&lng=75.8577258";
 
 export const CUISINE_IMG =
