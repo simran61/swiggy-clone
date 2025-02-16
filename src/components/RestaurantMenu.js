@@ -19,7 +19,7 @@ const RestaurantMenu = () => {
   const resInfo = useRestaurantMenu(resId);
   const [showIndex, setShowIndex] = useState(null);
 
-  console.log(resInfo);
+  // console.log(resInfo);
   // if (resInfo === null) return <Shimmer />;
 
   const {
@@ -35,6 +35,9 @@ const RestaurantMenu = () => {
     costForTwoMessage,
     feeDetails,
   } = resInfo?.cards[2]?.card?.card?.info || {};
+
+  console.log("RESTAURANT INFO", resInfo);
+  console.log(resInfo?.cards[2]?.card?.card?.info.feeDetails);
 
   const { offers } =
     resInfo?.cards[3]?.card?.card?.gridElements?.infoWithStyle || {};
@@ -155,10 +158,10 @@ const RestaurantMenu = () => {
               src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_40,h_40/v1648635511/Delivery_fee_new_cjxumu"
               alt="delivery"
             />
-            <span className="ml-2">{sla?.lastMileTravelString} |</span>
-            <span className="ml-1">
+            <span className="ml-2">Distance {sla?.lastMileTravelString}</span>
+            {/* <span className="ml-1"> |
               ₹{feeDetails?.amount / 100} Delivery fee will apply
-            </span>
+            </span> */}
           </div>
         </div>
       </div>
